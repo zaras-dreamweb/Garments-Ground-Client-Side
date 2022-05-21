@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Buttons",
+        "image": "https://i.ibb.co/XZdQD4r/bbb.png",
+        "description": "Made with plastics,polysthyrene and polyvinnyl resins",
+        "minimum_order_quantity": "500",
+        "available_quantity": "20000",
+        "price": "2"
+    },
+    {
+        "name": "Collars",
+        "image": "https://i.ibb.co/S0zSTyd/callarb2.png",
+        "description": "Shirt collar made of brass, baleen,plastic and metal",
+        "minimum_order_quantity": "100",
+        "available_quantity": "5000",
+        "price": "6"
+    },
+    {
+        "name": "Zippers",
+        "image": "https://i.ibb.co/cx2jtwS/zip.png",
+        "description": "Made of polyester and nylon",
+        "minimum_order_quantity": "100",
+        "available_quantity": "6000",
+        "price": "5"
+    }
+]
