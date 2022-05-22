@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import GoogleLogin from './GoogleLogin';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
 
 
 const Register = () => {
@@ -26,11 +28,28 @@ const Register = () => {
 
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
+    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
+
 
     let errorItem;
     if (errors || error) {
         errorItem = <p className='text-red-500'>{error?.message} {errors?.message}</p>
     };
+
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from);
+        }
+    }, [user || gUser]);
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     const handleEmailChange = event => {
         const emailRegex = /^\S+@\S+\.\S+$/;
@@ -57,6 +76,9 @@ const Register = () => {
         }
     };
 
+
+
+
     const handleSubmit = event => {
         event.preventDefault();
         const email = userInfo.email;
@@ -65,11 +87,13 @@ const Register = () => {
         event.target.reset();
     }
 
-
     const handlePasswordReset = async () => {
         if (userInfo.email) {
             await sendPasswordResetEmail(userInfo.email);
-            alert.success("Email Sent");
+            alert("Email Sent");
+        }
+        else {
+            alert('please enter Your email')
         }
     }
     return (
@@ -96,12 +120,19 @@ const Register = () => {
                         {
                             errors?.passwordError && <p className='text-red-400'>{errors.passwordError}</p>
                         }
+
+                        <label class="label">
+                            <Link onClick={handlePasswordReset} to='' class="label-text-alt link link-hover">Forgot password?</Link>
+                        </label>
+                        {errorItem}
+
                         <p>New to Garments Ground? <Link className='text-primary' to="/register">Please Register</Link></p>
                         <div class="form-control mt-6">
                             <button class="btn btn-primary">Login</button>
                         </div>
                         <div class="form-control mt-6">
-                            <GoogleLogin></GoogleLogin>
+                            {/* <GoogleLogin></GoogleLogin> */}
+                            <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary w-full">Google SignIn</button>
                         </div>
                     </form>
                 </div>

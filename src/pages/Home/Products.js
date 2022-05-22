@@ -20,7 +20,7 @@ const Products = () => {
             <h1 className='text-primary text-5xl text-center font-bold my-10 bg-success py-5'>Our Products</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 ml-8'>
                 {
-                    products.map(product => <p>
+                    products.map(product => <p key={product._id}>
                         <div className="card w-96 bg-base-100 shadow-xl image-full">
                             <figure><img src={product.image} alt='' /></figure>
                             <div className="card-body">

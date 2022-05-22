@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, } from 'react-firebase-hooks/auth';
 import GoogleLogin from './GoogleLogin';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Loading from '../Shared/Loading';
+
+
 
 const Register = () => {
     const [userInfo, setUserInfo] = useState({
@@ -22,12 +26,37 @@ const Register = () => {
         user,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    console.log(user);
 
+
+    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
+
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
     let errorItem;
-    if (errors || error) {
-        errorItem = <p className='text-red-500'>{error?.message} {errors?.message}</p>
+    if (errors || error || uError || gError) {
+        errorItem = <p className='text-red-500'>{error?.message || gError?.message || errors?.message || uError?.message}</p>
     };
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from);
+        }
+    }, [user || gUser]);
+
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+
+    const handleNameChange = event => {
+        setUserInfo({ ...userInfo, name: event.target.value })
+
+    }
+
 
     const handleEmailChange = event => {
         const emailRegex = /^\S+@\S+\.\S+$/;
@@ -65,11 +94,13 @@ const Register = () => {
         }
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const email = userInfo.email;
         const password = userInfo.password;
-        createUserWithEmailAndPassword(email, password);
+        const name = userInfo.name;
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
         event.target.reset();
     }
     return (
@@ -78,6 +109,13 @@ const Register = () => {
                 <h1 className='text-center text-3xl text-primary font-bold pt-6'>Register</h1>
                 <div class="card-body">
                     <form onSubmit={handleSubmit}>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Name</span>
+                            </label>
+                            <input onChange={handleNameChange} type="text" name='name' placeholder="name" class="input input-bordered" required />
+                        </div>
+
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text">Email</span>
@@ -100,7 +138,7 @@ const Register = () => {
                             <label class="label">
                                 <span class="label-text">Confirm Password</span>
                             </label>
-                            <input onChange={handleConfirmPasswordChange} type="text" name='confirmPassword' placeholder="confirm password" class="input input-bordered" />
+                            <input onChange={handleConfirmPasswordChange} type="password" name='confirmPassword' placeholder="confirm password" class="input input-bordered" />
                         </div>
                         {
                             errors?.confirmPasswordError && <p className='text-red-400'>{errors.confirmPasswordError}</p>
@@ -110,7 +148,8 @@ const Register = () => {
                             <button type='submit' class="btn btn-primary text-white">Register</button>
                         </div>
                         <div class="form-control mt-6">
-                            <GoogleLogin></GoogleLogin>
+                            {/* <GoogleLogin></GoogleLogin> */}
+                            <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary w-full">Google SignIn</button>
                         </div>
                     </form>
                 </div>
