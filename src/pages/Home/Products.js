@@ -11,7 +11,7 @@ const Products = () => {
     }, []);
 
     const handleBuyNow = id => {
-        navigate(`/products/${id}`)
+        navigate(`/purchase/${id}`)
     }
 
 
