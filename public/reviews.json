@@ -3,18 +3,18 @@
         "name": "Max",
         "image": "https://i.ibb.co/MkkMmLG/man.png",
         "description": "Best quantity products I have ever purchased.",
-        "rating": 5
+        "rating": "5"
     },
     {
         "name": "Anie",
         "image": "https://i.ibb.co/931ShGw/wooo.png",
         "description": "Regular customer for Garments Ground. They never disappointed me.",
-        "rating": 4.5
+        "rating": "4.5"
     },
     {
         "name": "Danver",
         "image": "https://i.ibb.co/FwdDf2C/man2.png",
         "description": "Best and lowest price from any other manufacturer.",
-        "rating": 5
+        "rating": "5"
     }
 ]

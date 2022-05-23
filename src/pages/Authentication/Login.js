@@ -32,8 +32,8 @@ const Register = () => {
 
 
     let errorItem;
-    if (errors || error) {
-        errorItem = <p className='text-red-500'>{error?.message} {errors?.message}</p>
+    if (errors || error || gError) {
+        errorItem = <p className='text-red-500'>{errors?.message} {error?.message} {gError?.message}</p>
     };
 
 
@@ -124,9 +124,8 @@ const Register = () => {
                         <label class="label">
                             <Link onClick={handlePasswordReset} to='' class="label-text-alt link link-hover">Forgot password?</Link>
                         </label>
-                        {errorItem}
-
                         <p>New to Garments Ground? <Link className='text-primary' to="/register">Please Register</Link></p>
+                        {errorItem}
                         <div class="form-control mt-6">
                             <button class="btn btn-primary">Login</button>
                         </div>

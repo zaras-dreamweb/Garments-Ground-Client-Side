@@ -21,11 +21,10 @@ const Purchase = () => {
     const handleIncrease = event => {
         event.preventDefault();
         const oldQuantity = parseInt(productQuantity.minimum_order_quantity);
-        console.log(oldQuantity);
         const newQuantity = parseInt(event.target.minimum_order_quantity.value);
-        console.log(newQuantity);
 
-        const availableQuantity = parseInt(productQuantity.available_quantity);
+
+
 
 
         // if (newQuantity > maxQuantity) {
@@ -59,9 +58,7 @@ const Purchase = () => {
     const handleDecrease = event => {
         event.preventDefault();
         const oldQuantity = parseInt(productQuantity.minimum_order_quantity);
-        console.log(oldQuantity);
         const minimum_order_quantity = oldQuantity - parseInt(event.target.minimum_order_quantity.value);
-        console.log(minimum_order_quantity);
         const product = { minimum_order_quantity };
         setProductQuantity(product)
 
@@ -145,13 +142,14 @@ const Purchase = () => {
                             <input type="text" name='minimum_order_quantity' placeholder="Decrease Quantity" />
                             <button type="submit" className="btn btn-primary mb-3 m-2">Decrease Quantity</button>
                         </form>
-
-
                     </div>
                 </div>
 
+
+
+
                 <div class="hero">
-                    <div class="">
+                    <div>
                         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-success">
                             <form onSubmit={handlePlaceOrder}>
                                 <div class="card-body">
