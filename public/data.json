@@ -5,7 +5,9 @@
         "description": "Made with plastics,polysthyrene and polyvinnyl resins",
         "minimum_order_quantity": "500",
         "available_quantity": "20000",
-        "price": "2"
+        "your_purchase": "500",
+        "price": "2",
+        "your_price": "1000"
     },
     {
         "name": "Collars",
@@ -13,7 +15,9 @@
         "description": "Shirt collar made of brass, baleen,plastic and metal",
         "minimum_order_quantity": "100",
         "available_quantity": "5000",
-        "price": "6"
+        "your_purchase": "100",
+        "price": "6",
+        "your_price": "600"
     },
     {
         "name": "Zippers",
@@ -21,6 +25,8 @@
         "description": "Made of polyester and nylon",
         "minimum_order_quantity": "100",
         "available_quantity": "6000",
-        "price": "5"
+        "your_purchase": "100",
+        "price": "5",
+        "your_price": "500"
     }
 ]

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
+    console.log(orders);
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/order?email=${user.email}`)
@@ -29,7 +31,6 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <h1>My orders:{orders.length}</h1>
             <div>
                 {
                     orders.map(order => <p>
@@ -42,15 +43,25 @@ const MyOrders = () => {
                                         <th>Email</th>
                                         <th>Name</th>
                                         <th>Quantity</th>
+                                        <th>Payment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <tr>
-                                        <th><button onClick={() => handleDelete(order._id)} className='btn btn-xs bg-primary text-white'>Delete</button></th>
+                                        <th>{
+                                            (!order.paid) && <button onClick={() => handleDelete(order._id)} className='btn btn-xs bg-primary text-white'>Delete</button>
+                                        }</th>
                                         <td>{order.email}</td>
                                         <td>{order.name}</td>
                                         <td>{order.quantity}</td>
+                                        <td>
+                                            {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs bg-primary text-white'>PAY</button></Link>}
+                                            {(order.price && order.paid) && <div>
+                                                <p><span className='font-bold text-primary'>PAID</span></p>
+                                                <p>Transaction Id: <span className='text-primary font-bold'>{order.transactionId}</span></p>
+                                            </div>}
+                                        </td>
 
                                     </tr>
 
@@ -60,7 +71,7 @@ const MyOrders = () => {
                     </p>)
                 }
             </div>
-        </div>
+        </div >
     );
 };
 

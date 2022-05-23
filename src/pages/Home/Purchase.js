@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
-import usePurchase from '../../hooks/usePurchase';
 
 const Purchase = () => {
     const { id } = useParams();
@@ -10,6 +9,8 @@ const Purchase = () => {
     // console.log(user);
     // const [purchase, setPurchase] = usePurchase(id);
     const [productQuantity, setProductQuantity] = useState({});
+    const [disable, setDisable] = useState(false);
+
 
     useEffect(() => {
         const url = `http://localhost:5000/products/${id}`;
@@ -18,24 +19,27 @@ const Purchase = () => {
             .then(data => setProductQuantity(data));
     }, [productQuantity]);
 
+
     const handleIncrease = event => {
         event.preventDefault();
-        const oldQuantity = parseInt(productQuantity.minimum_order_quantity);
-        const newQuantity = parseInt(event.target.minimum_order_quantity.value);
+        const oldQuantity = parseInt(productQuantity.your_purchase);
+        const newQuantity = parseInt(event.target.your_purchase.value);
 
 
 
 
-
-        // if (newQuantity > maxQuantity) {
+        // const minQuantity = parseInt(event.target.minimum_order_quantity.value)
+        // const maxQuantity = parseInt(event.target.available_quantity.value)
+        // if (newQuantity >= maxQuantity) {
         //     alert('Please order within available quantity')
-        //     const minimum_order_quantity = oldQuantity;
+        //      parseInt(event.target.your_purchase.value)=""
         // }
-        const minimum_order_quantity = oldQuantity + newQuantity;
-        console.log(minimum_order_quantity);
 
-        const product = { minimum_order_quantity };
+
+        const your_purchase = oldQuantity + newQuantity;
+        const product = { your_purchase };
         setProductQuantity(product)
+
 
         const url = `http://localhost:5000/products/${id}`;
         fetch(url, {
@@ -52,14 +56,18 @@ const Purchase = () => {
 
                 event.target.reset()
             })
+
+
+
+
     }
 
 
     const handleDecrease = event => {
         event.preventDefault();
-        const oldQuantity = parseInt(productQuantity.minimum_order_quantity);
-        const minimum_order_quantity = oldQuantity - parseInt(event.target.minimum_order_quantity.value);
-        const product = { minimum_order_quantity };
+        const oldQuantity = parseInt(productQuantity.your_purchase);
+        const your_purchase = oldQuantity - parseInt(event.target.your_purchase.value);
+        const product = { your_purchase };
         setProductQuantity(product)
 
         const url = `http://localhost:5000/products/${id}`;
@@ -82,9 +90,10 @@ const Purchase = () => {
     const handlePlaceOrder = event => {
         event.preventDefault();
         const name = productQuantity.name;
-        const quantity = productQuantity.minimum_order_quantity;
+        const quantity = productQuantity.your_purchase;
         const phone = event.target.phone.value;
         const address = event.target.address.value;
+        const price = productQuantity.your_price;
 
 
         const order = {
@@ -93,7 +102,8 @@ const Purchase = () => {
             user: user.displayName,
             email: user.email,
             phone,
-            address
+            address,
+            price
         }
 
         fetch('http://localhost:5000/order', {
@@ -127,11 +137,13 @@ const Purchase = () => {
                         <p className="py-3"><span className='font-bold'>Available Quantity:</span> {productQuantity.available_quantity} pcs</p>
                         <p className="py-3"><span className='font-bold'>Minimum Purchase:</span> {productQuantity.minimum_order_quantity} pcs</p>
                         <p className="py-3"><span className='font-bold'>Price:</span> ${productQuantity.price} /pc</p>
+                        <p className="py-3"><span className='font-bold'>Your Purchase Quantity:</span> {productQuantity.your_purchase} pcs</p>
+                        <p className="py-3"><span className='font-bold'>Your Price:</span> ${productQuantity.your_price} /pc</p>
                         <form onSubmit={handleIncrease}>
-                            <input type="text" name='minimum_order_quantity' placeholder="Increase Quantity" />
+                            <input type="text" name='your_purchase' placeholder="Increase Quantity" />
                             <button type="submit" className="btn btn-primary mb-3 m-2">Increase Quantity</button>
                             {/* {
-                                newQuantity > maxQuantity
+                                
                                     ?
                                     <button type="submit" className="btn btn-primary mb-3 m-2" disabled>Increase Quantity</button>
                                     :
@@ -139,7 +151,7 @@ const Purchase = () => {
                             } */}
                         </form>
                         <form onSubmit={handleDecrease}>
-                            <input type="text" name='minimum_order_quantity' placeholder="Decrease Quantity" />
+                            <input type="text" name='your_purchase' placeholder="Decrease Quantity" />
                             <button type="submit" className="btn btn-primary mb-3 m-2">Decrease Quantity</button>
                         </form>
                     </div>
@@ -163,7 +175,10 @@ const Purchase = () => {
                                         <input type="text" name='name' value={productQuantity.name} placeholder='' class="input input-bordered" disabled />
                                     </div>
                                     <div class="form-control">
-                                        <input type="text" name='quantity' value={productQuantity.minimum_order_quantity} placeholder='' class="input input-bordered" disabled />
+                                        <input type="text" name='quantity' value={productQuantity.your_purchase} placeholder='' class="input input-bordered" disabled />
+                                    </div>
+                                    <div class="form-control">
+                                        <input type="text" name='price' value={productQuantity.your_price} placeholder='' class="input input-bordered" disabled />
                                     </div>
                                     <div class="form-control">
                                         <input type="text" name='address' placeholder="Address" class="input input-bordered" />
