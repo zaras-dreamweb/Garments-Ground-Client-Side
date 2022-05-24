@@ -6,23 +6,22 @@ import { toast } from 'react-toastify';
 const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
     const makeAdmin = () => {
-        const url = `http://localhost:5000/user/admin/${email}`;
-        fetch(url, {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
             headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
         })
             .then(res => {
                 if (res.status === 403) {
-                    toast.error('Failed to make an Admin');
+                    toast.error("Failed to make an Admin")
                 }
                 return res.json()
             })
             .then(data => {
                 if (data.modifiedCount > 0) {
                     refetch();
-                    toast.success('Successfully made an Admin');
+                    toast.success('Successfully made an admin')
                 }
             })
     }

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useProducts from '../../hooks/useProducts';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
     const navigate = useNavigate();
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, []);
+    // const [products, setProducts] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/products')
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data));
+    // }, []);
+    const [products, setProducts] = useProducts();
 
     const handleBuyNow = id => {
         navigate(`/purchase/${id}`)

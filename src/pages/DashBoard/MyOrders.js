@@ -48,7 +48,7 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <h1 className='text-3xl text-primary text-center font-bold mt-6 mb-6'>Your Orders</h1>
+            <h1 className='text-3xl text-primary text-center font-bold mt-6 mb-6'>My Orders</h1>
             <div>
                 {
                     orders.map(order => <p>
