@@ -38,10 +38,10 @@ const AddReview = () => {
     }
     return (
         <div>
-            <h1>Reviews</h1>
+            <h1 className='text-3xl text-primary font-bold text-center mb-6 mt-6'>Add Your Review</h1>
             <div class="hero">
                 <div>
-                    <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-success">
+                    <div class="card shadow-2xl bg-success">
                         <form onSubmit={handleAddReview}>
                             <div class="card-body">
                                 <div class="form-control">
@@ -60,7 +60,7 @@ const AddReview = () => {
                                     <input type="text" name='image' placeholder='Photo URL' class="input input-bordered" />
                                 </div>
                                 <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary">Add Review</button>
+                                    <button type='submit' class="btn btn-primary text-white">Add Review</button>
                                 </div>
                             </div>
                         </form>

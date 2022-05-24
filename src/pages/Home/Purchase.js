@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { useForm } from "react-hook-form";
 
 const Purchase = () => {
     const { id } = useParams();
     const [user] = useAuthState(auth);
-    // console.log(user);
-    // const [purchase, setPurchase] = usePurchase(id);
     const [productQuantity, setProductQuantity] = useState({});
-    const [disable, setDisable] = useState(false);
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
 
     useEffect(() => {
@@ -19,27 +18,14 @@ const Purchase = () => {
             .then(data => setProductQuantity(data));
     }, [productQuantity]);
 
-
-    const handleIncrease = event => {
-        event.preventDefault();
+    const onSubmitIncrease = (data, event) => {
+        console.log(data);
         const oldQuantity = parseInt(productQuantity.your_purchase);
         const newQuantity = parseInt(event.target.your_purchase.value);
-
-
-
-
-        // const minQuantity = parseInt(event.target.minimum_order_quantity.value)
-        // const maxQuantity = parseInt(event.target.available_quantity.value)
-        // if (newQuantity >= maxQuantity) {
-        //     alert('Please order within available quantity')
-        //      parseInt(event.target.your_purchase.value)=""
-        // }
-
 
         const your_purchase = oldQuantity + newQuantity;
         const product = { your_purchase };
         setProductQuantity(product)
-
 
         const url = `http://localhost:5000/products/${id}`;
         fetch(url, {
@@ -53,14 +39,12 @@ const Purchase = () => {
             .then(data => {
                 console.log('success', data);
                 alert('Product Increased successfully!!')
-
-                event.target.reset()
+                event.target.reset();
             })
-
-
-
-
     }
+
+
+
 
 
     const handleDecrease = event => {
@@ -83,6 +67,7 @@ const Purchase = () => {
                 console.log('success', data);
                 alert('Product Decreased successfully!!')
                 event.target.reset()
+                productQuantity.your_purchase.reset()
             })
     }
 
@@ -122,6 +107,32 @@ const Purchase = () => {
     }
 
 
+
+    // const onSubmitDecrease = (data, event) => {
+    //     console.log(data);
+    //     const oldQuantity = parseInt(productQuantity.your_purchase);
+    //     const your_purchase = oldQuantity - parseInt(event.target.your_purchase.value);
+    //     const product = { your_purchase };
+    //     setProductQuantity(product)
+
+    //     const url = `http://localhost:5000/products/${id}`;
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json',
+    //         },
+    //         body: JSON.stringify(product)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log('success', data);
+    //             alert('Product Decreased successfully!!')
+    //             event.target.reset()
+    //         })
+
+    // }
+
+
     return (
         <div>
             <div className="hero-content flex-col lg:flex-row">
@@ -139,17 +150,27 @@ const Purchase = () => {
                         <p className="py-3"><span className='font-bold'>Price:</span> ${productQuantity.price} /pc</p>
                         <p className="py-3"><span className='font-bold'>Your Purchase Quantity:</span> {productQuantity.your_purchase} pcs</p>
                         <p className="py-3"><span className='font-bold'>Your Price:</span> ${productQuantity.your_price} /pc</p>
-                        <form onSubmit={handleIncrease}>
-                            <input type="text" name='your_purchase' placeholder="Increase Quantity" />
+                        {/* increase form */}
+                        <form onSubmit={handleSubmit(onSubmitIncrease)}>
+                            <input type="text" name='your_purchase' placeholder="Increase Quantity"
+                                {...register("your_purchase", {
+                                    required: {
+                                        value: true,
+                                        message: 'Enter a valid quantity'
+                                    },
+                                    max: {
+                                        value: 2000,
+                                        message: 'less than available quantity required'
+                                    }
+                                })} />
+                            <p>
+                                {errors.your_purchase?.type === 'required' && <span className='text-error'>{errors.your_purchase.message}</span>}
+                                {errors.your_purchase?.type === 'max' && <span className='text-error'>{errors.your_purchase.message}</span>}
+                            </p>
+
                             <button type="submit" className="btn btn-primary mb-3 m-2">Increase Quantity</button>
-                            {/* {
-                                
-                                    ?
-                                    <button type="submit" className="btn btn-primary mb-3 m-2" disabled>Increase Quantity</button>
-                                    :
-                                    <button type="submit" className="btn btn-primary mb-3 m-2">Increase Quantity</button>
-                            } */}
                         </form>
+                        {/* decrease form */}
                         <form onSubmit={handleDecrease}>
                             <input type="text" name='your_purchase' placeholder="Decrease Quantity" />
                             <button type="submit" className="btn btn-primary mb-3 m-2">Decrease Quantity</button>

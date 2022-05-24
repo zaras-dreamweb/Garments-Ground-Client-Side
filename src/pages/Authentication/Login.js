@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import GoogleLogin from './GoogleLogin';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken';
 
 
 const Register = () => {
@@ -30,6 +31,7 @@ const Register = () => {
 
     const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
 
+    const [token] = useToken(user || gUser);
 
     let errorItem;
     if (errors || error || gError) {
@@ -42,10 +44,10 @@ const Register = () => {
     let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from);
         }
-    }, [user || gUser]);
+    }, [token, from, navigate]);
 
     if (loading) {
         return <Loading></Loading>

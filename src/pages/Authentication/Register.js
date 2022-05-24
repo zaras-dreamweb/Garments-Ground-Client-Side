@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile, } from 'react-fire
 import GoogleLogin from './GoogleLogin';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
+import useToken from '../../hooks/useToken'
 
 
 
@@ -26,12 +27,13 @@ const Register = () => {
         user,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    console.log(user);
 
 
     const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
 
     const [updateProfile, updating, uError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || gUser);
 
     let errorItem;
     if (errors || error || uError || gError) {
@@ -43,10 +45,13 @@ const Register = () => {
     let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from);
         }
-    }, [user || gUser]);
+    }, [token, from, navigate]);
+
+
+
 
     if (loading || updating) {
         return <Loading></Loading>

@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     }
 
     return (
@@ -33,7 +34,7 @@ const Navbar = () => {
                             ?
                             <div>
                                 <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
-                                <span>{user.displayName}</span>
+                                <span>{user?.displayName}</span>
                             </div>
                             :
                             <Link to="/login">Login</Link>
