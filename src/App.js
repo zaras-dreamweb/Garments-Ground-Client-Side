@@ -13,6 +13,8 @@ import Home from './pages/Home/Home';
 import Purchase from './pages/Home/Purchase';
 import NotFound from './pages/NotFound/NotFound';
 import Navbar from './pages/Shared/Navbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
         <Route path='/Login' element={<Login></Login>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
