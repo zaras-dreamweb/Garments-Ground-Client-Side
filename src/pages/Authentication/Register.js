@@ -108,52 +108,52 @@ const Register = () => {
         event.target.reset();
     }
     return (
-        <div class="hero mt-10">
-            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-lime-200">
+        <div className="hero mt-10">
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-lime-200">
                 <h1 className='text-center text-3xl text-primary font-bold pt-6'>Register</h1>
-                <div class="card-body">
+                <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Name</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
                             </label>
-                            <input onChange={handleNameChange} type="text" name='name' placeholder="name" class="input input-bordered" required />
+                            <input onChange={handleNameChange} type="text" name='name' placeholder="name" className="input input-bordered" required />
                         </div>
 
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <input onChange={handleEmailChange} type="text" name='email' placeholder="email" class="input input-bordered" />
+                            <input onChange={handleEmailChange} type="text" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         {
                             errors?.emailError && <p className='text-red-400'>{errors.emailError}</p>
                         }
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Password</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
                             </label>
-                            <input onChange={handlePasswordChange} type="password" name='password' placeholder="password" class="input input-bordered" />
+                            <input onChange={handlePasswordChange} type="password" name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         {
                             errors?.passwordError && <p className='text-red-400'>{errors.passwordError}</p>
                         }
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Confirm Password</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
                             </label>
-                            <input onChange={handleConfirmPasswordChange} type="password" name='confirmPassword' placeholder="confirm password" class="input input-bordered" />
+                            <input onChange={handleConfirmPasswordChange} type="password" name='confirmPassword' placeholder="confirm password" className="input input-bordered" />
                         </div>
                         {
                             errors?.confirmPasswordError && <p className='text-red-400'>{errors.confirmPasswordError}</p>
                         }
                         <p>Already have an account? <Link className='text-primary' to="/login">Please Login</Link></p>
-                        <div class="form-control mt-6">
-                            <button type='submit' class="btn btn-primary text-white">Register</button>
+                        <div className="form-control mt-6">
+                            <button type='submit' className="btn btn-primary text-white">Register</button>
                         </div>
-                        <div class="form-control mt-6">
+                        <div className="form-control mt-6">
                             {/* <GoogleLogin></GoogleLogin> */}
-                            <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary w-full">Google SignIn</button>
+                            <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary w-full">Google SignIn</button>
                         </div>
                     </form>
                 </div>

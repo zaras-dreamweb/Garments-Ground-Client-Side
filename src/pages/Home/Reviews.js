@@ -12,21 +12,21 @@ const Reviews = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-x-3 gap-y-3'>
                 {
                     reviews.map(review => <p>
-                        <div class="card w-50 bg-info shadow-xl">
+                        <div className="card w-50 bg-info shadow-xl">
                             <div className='flex justify-center items-center pt-4'>
-                                <figure class="w-16 rounded ">
-                                    <img src={review.image} alt='' class="mask mask-circle " />
+                                <figure className="w-16 rounded ">
+                                    <img src={review.image} alt='' className="mask mask-circle " />
                                 </figure>
                             </div>
 
-                            {/* <div class="avatar">
-                            <div class="w-16 rounded">
+                            {/* <div className="avatar">
+                            <div className="w-16 rounded">
                                 <img src="https://api.lorem.space/image/face?hash=77703" alt="Tailwind-CSS-Avatar-component" />
                             </div>
                         </div> */}
 
-                            <div class="card-body items-center text-center">
-                                <h2 class="card-title">{review.name}</h2>
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title">{review.name}</h2>
                                 <p>{review.description}</p>
 
                                 <Rating

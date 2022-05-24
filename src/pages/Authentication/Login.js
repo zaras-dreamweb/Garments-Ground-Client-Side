@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import GoogleLogin from './GoogleLogin';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading';
 import useToken from '../../hooks/useToken';
@@ -99,41 +98,41 @@ const Register = () => {
         }
     }
     return (
-        <div class="hero mt-10">
-            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-lime-200">
+        <div className="hero mt-10">
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-lime-200">
                 <h1 className='text-center text-3xl text-primary font-bold pt-6'>Login</h1>
-                <div class="card-body">
+                <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
-                            <input onChange={handleEmailChange} type="text" name='email' placeholder="email" class="input input-bordered" />
+                            <input onChange={handleEmailChange} type="text" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         {
                             errors?.emailError && <p className='text-red-400'>{errors.emailError}</p>
                         }
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Password</span>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
                             </label>
-                            <input onChange={handlePasswordChange} type="password" name='password' placeholder="password" class="input input-bordered" />
+                            <input onChange={handlePasswordChange} type="password" name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         {
                             errors?.passwordError && <p className='text-red-400'>{errors.passwordError}</p>
                         }
 
-                        <label class="label">
-                            <Link onClick={handlePasswordReset} to='' class="label-text-alt link link-hover">Forgot password?</Link>
+                        <label className="label">
+                            <Link onClick={handlePasswordReset} to='' className="label-text-alt link link-hover">Forgot password?</Link>
                         </label>
                         <p>New to Garments Ground? <Link className='text-primary' to="/register">Please Register</Link></p>
                         {errorItem}
-                        <div class="form-control mt-6">
-                            <button class="btn btn-primary">Login</button>
+                        <div className="form-control mt-6">
+                            <button className="btn btn-primary">Login</button>
                         </div>
-                        <div class="form-control mt-6">
+                        <div className="form-control mt-6">
                             {/* <GoogleLogin></GoogleLogin> */}
-                            <button onClick={() => signInWithGoogle()} class="btn btn-outline btn-primary w-full">Google SignIn</button>
+                            <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary w-full">Google SignIn</button>
                         </div>
                     </form>
                 </div>

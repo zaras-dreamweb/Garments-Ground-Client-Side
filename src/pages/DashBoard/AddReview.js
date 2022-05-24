@@ -39,28 +39,28 @@ const AddReview = () => {
     return (
         <div>
             <h1 className='text-3xl text-primary font-bold text-center mb-6 mt-6'>Add Your Review</h1>
-            <div class="hero">
+            <div className="hero">
                 <div>
-                    <div class="card shadow-2xl bg-success">
+                    <div className="card shadow-2xl bg-success">
                         <form onSubmit={handleAddReview}>
-                            <div class="card-body">
-                                <div class="form-control">
-                                    <input type="text" value={user.displayName} placeholder='' class="input input-bordered" />
+                            <div className="card-body">
+                                <div className="form-control">
+                                    <input type="text" value={user.displayName} placeholder='' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="text" value={user.email} placeholder='' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="text" value={user.email} placeholder='' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <textarea type="text" name='description' placeholder='Description' class="input input-bordered" />
+                                <div className="form-control">
+                                    <textarea type="text" name='description' placeholder='Description' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="number" name='rating' placeholder='Rating' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="number" name='rating' placeholder='Rating' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="text" name='image' placeholder='Photo URL' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="text" name='image' placeholder='Photo URL' className="input input-bordered" />
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary text-white">Add Review</button>
+                                <div className="form-control mt-6">
+                                    <button type='submit' className="btn btn-primary text-white">Add Review</button>
                                 </div>
                             </div>
                         </form>

@@ -41,38 +41,38 @@ const AddProducts = () => {
     }
     return (
         <div>
-            <h1 className='text-3xl text-primary font-bold text-center mb-6 mt-6'>Add Products</h1>
-            <div class="hero">
+            <h1 className='text-3xl text-primary font-bold text-center mb-6 mt-6'>Add a New Product</h1>
+            <div className="hero">
                 <div>
-                    <div class="card shadow-2xl bg-success">
+                    <div className="card shadow-2xl bg-success">
                         <form onSubmit={handleAddProducts}>
-                            <div class="card-body">
-                                <div class="form-control">
-                                    <input type="text" name='name' placeholder='Product Name' class="input input-bordered" />
+                            <div className="card-body">
+                                <div className="form-control">
+                                    <input type="text" name='name' placeholder='Product Name' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <textarea type="text" name='description' placeholder='Product Description' class="input input-bordered" />
+                                <div className="form-control">
+                                    <textarea type="text" name='description' placeholder='Product Description' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="text" name='minimum_order_quantity' placeholder='Minimum_order_quantity' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="text" name='minimum_order_quantity' placeholder='Minimum_order_quantity' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="number" name='available_quantity' placeholder='Available_quantity' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="number" name='available_quantity' placeholder='Available_quantity' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="number" name='your_purchase' placeholder='Your_purchase' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="number" name='your_purchase' placeholder='Your_purchase' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="number" name='price' placeholder='Price' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="number" name='price' placeholder='Price' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="number" name='your_price' placeholder='Your_price' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="number" name='your_price' placeholder='Your_price' className="input input-bordered" />
                                 </div>
-                                <div class="form-control">
-                                    <input type="text" name='image' placeholder='Photo URL' class="input input-bordered" />
+                                <div className="form-control">
+                                    <input type="text" name='image' placeholder='Photo URL' className="input input-bordered" />
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button type='submit' class="btn btn-primary text-white">Add Product</button>
+                                <div className="form-control mt-6">
+                                    <button type='submit' className="btn btn-primary text-white">Add Product</button>
                                 </div>
                             </div>
                         </form>

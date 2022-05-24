@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const MyProfile = () => {
@@ -29,45 +30,44 @@ const MyProfile = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                toast.success('Profile Updated Successfully!!')
                 event.target.reset();
             })
     }
 
-
-
     return (
-        <div class="hero min-h-screen bg-base-100">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <div class="text-center lg:text-left">
-                    <h1 class="text-5xl text-primary font-bold">Update Your Profile Here!</h1>
-                    <p class="py-6 text-2xl">Let's keep a track!</p>
+        <div className="hero mt-20 bg-base-100">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left">
+                    <h1 className="text-5xl text-primary font-bold mb-4">Hello {user.displayName} !!</h1>
+                    <h1 className="text-3xl text-secondary font-bold">You can update your PROFILE here!</h1>
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-success">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-success">
                     <form onSubmit={handleProfile}>
-                        <div class="card-body">
-                            <div class="form-control">
+                        <div className="card-body">
+                            <div className="form-control">
 
-                                <input type="text" value={user.displayName} placeholder="" class="input input-bordered" />
+                                <input type="text" value={user.displayName} placeholder="" className="input input-bordered" />
                             </div>
-                            <div class="form-control">
+                            <div className="form-control">
 
-                                <input type="text" value={user.email} placeholder="" class="input input-bordered" />
+                                <input type="text" value={user.email} placeholder="" className="input input-bordered" />
                             </div>
-                            <div class="form-control">
+                            <div className="form-control">
 
-                                <input type="text" name='address' placeholder="Address" class="input input-bordered" />
+                                <input type="text" name='address' placeholder="Address" className="input input-bordered" />
                             </div>
-                            <div class="form-control">
+                            <div className="form-control">
 
-                                <input type="text" name='phone' placeholder="Phone" class="input input-bordered" />
+                                <input type="text" name='phone' placeholder="Phone" className="input input-bordered" />
                             </div>
-                            <div class="form-control">
+                            <div className="form-control">
 
-                                <input type="text" name='linkedin' placeholder="LinkedIn Profile Link" class="input input-bordered" />
+                                <input type="text" name='linkedin' placeholder="LinkedIn Profile Link" className="input input-bordered" />
                             </div>
 
-                            <div class="form-control mt-6">
-                                <button type='submit' class="btn btn-primary text-white">Update</button>
+                            <div className="form-control mt-6">
+                                <button type='submit' className="btn btn-primary text-white">Update</button>
                             </div>
                         </div>
                     </form>

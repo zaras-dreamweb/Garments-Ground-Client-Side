@@ -10,6 +10,16 @@
         "your_price": "600"
     },
     {
+        "name": "Zippers",
+        "image": "https://i.ibb.co/K0vFzrS/zip22.png",
+        "description": "Made of polyester and nylon.",
+        "minimum_order_quantity": "200",
+        "available_quantity": "20000",
+        "your_purchase": "200",
+        "price": "5",
+        "your_price": "1000"
+    },
+    {
         "name": "Collars",
         "image": "https://i.ibb.co/S0zSTyd/callarb2.png",
         "description": "Shirt collar made of brass, baleen,plastic and metal.",
@@ -18,15 +28,5 @@
         "your_purchase": "200",
         "price": "4",
         "your_price": "800"
-    },
-    {
-        "name": "Zippers",
-        "image": "https://i.ibb.co/cx2jtwS/zip.png",
-        "description": "Made of polyester and nylon.",
-        "minimum_order_quantity": "200",
-        "available_quantity": "20000",
-        "your_purchase": "200",
-        "price": "5",
-        "your_price": "1000"
     }
 ]

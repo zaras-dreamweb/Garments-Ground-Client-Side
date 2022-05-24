@@ -26,8 +26,8 @@ const Products = () => {
                         <div className="card w-96 bg-base-100 shadow-xl image-full">
                             <figure><img src={product.image} alt='' /></figure>
                             <div className="card-body">
-                                <div class="avatar mb-6">
-                                    <div class="w-24 rounded-full">
+                                <div className="avatar mb-6">
+                                    <div className="w-24 rounded-full">
                                         <img src={product.image} alt='' />
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@ const Products = () => {
                                 <h2 className="card-title"><span className='text-secondary'>Price:</span> $ {product.price}/pc</h2>
                                 <p><strong className='text-secondary'>Description</strong>: {product.description}</p>
                                 <div className="card-actions justify-end">
-                                    <button onClick={() => handleBuyNow(product._id)} className="btn btn-secondary">Buy Now</button>
+                                    <button onClick={() => handleBuyNow(product._id)} className="btn btn-secondary text-primary">Buy Now</button>
                                 </div>
                             </div>
                         </div>

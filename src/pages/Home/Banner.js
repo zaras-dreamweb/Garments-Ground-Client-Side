@@ -10,12 +10,12 @@ const Banner = () => {
                 <div className="carousel-item relative w-full">
                     <img style={{ height: '600px' }} src={test3} alt="" className="w-full" />
                 </div> */}
-            <div class="hero min-h-screen" style={{ backgroundImage: `url(${test3})` }}>
-                <div class="hero-overlay bg-opacity-60"></div>
-                <div class="hero-content text-center text-neutral-content">
-                    <div class="max-w-md">
-                        <h1 class="mb-5 text-5xl font-bold text-secondary">Garments Gorund</h1>
-                        <p class="mb-5 text-2xl text-secondary">Your Choise! Our Products!!</p>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${test3})` }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                    <div className="max-w-md">
+                        <h1 className="mb-5 text-5xl font-bold text-secondary">Garments Gorund</h1>
+                        <p className="mb-5 text-2xl text-secondary">Your Choise! Our Products!!</p>
 
                     </div>
                 </div>
