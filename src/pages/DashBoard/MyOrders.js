@@ -3,8 +3,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import DeleteModal from './DeleteModal';
 
 const MyOrders = () => {
+    const [singleOrder, setSingleOrder] = useState(null);
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
@@ -32,23 +34,6 @@ const MyOrders = () => {
         }
     }, [user])
 
-    const handleDelete = id => {
-        const proceed = window.confirm('Are Yyu sure you want to delete?');
-        if (proceed) {
-            fetch(`http://localhost:5000/order/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    const remaining = orders.filter(order => order._id !== id);
-                    setOrders(remaining);
-                })
-        }
-    }
     return (
         <div>
             <h1 className='text-3xl text-primary text-center font-bold mt-6 mb-6'>My Orders</h1>
@@ -71,7 +56,7 @@ const MyOrders = () => {
 
                                     <tr>
                                         <th>{
-                                            (!order.paid) && <button onClick={() => handleDelete(order._id)} className='btn btn-xs bg-primary text-white'>Delete</button>
+                                            (!order.paid) && <label onClick={() => setSingleOrder(order)} for="delete-modal" class="btn btn-xs bg-primary text-white">Delete M</label>
                                         }</th>
                                         <td>{order.email}</td>
                                         <td>{order.name}</td>
@@ -88,6 +73,7 @@ const MyOrders = () => {
 
                                 </tbody>
                             </table>
+                            {singleOrder && <DeleteModal singleOrder={singleOrder} orders={orders} setOrders={setOrders}></DeleteModal>}
                         </div>
                     </p>)
                 }

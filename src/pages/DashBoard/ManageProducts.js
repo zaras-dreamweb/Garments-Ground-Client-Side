@@ -1,29 +1,10 @@
-import React from 'react';
-import { toast } from 'react-toastify';
+import React, { useState } from 'react';
 import useProducts from '../../hooks/useProducts';
+import ManageDeleteModal from './ManageDeleteModal';
 
 const ManageProducts = () => {
     const [products, setProducts] = useProducts();
-
-
-    const handleDelete = id => {
-        const proceed = window.confirm('Are You sure you want to delete?');
-        if (proceed) {
-            fetch(`http://localhost:5000/products/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    const remaining = products.filter(p => p._id !== id);
-                    setProducts(remaining);
-                    toast.success('Product deleted successfully');
-                })
-        }
-    }
+    const [singleProduct, setSingleProduct] = useState(null);
 
     return (
         <div>
@@ -43,7 +24,9 @@ const ManageProducts = () => {
                             <tbody>
 
                                 <tr>
-                                    <th><button onClick={() => handleDelete(p._id)} class="btn btn-xs text-white bg-primary">Delete</button></th>
+                                    <th>
+                                        <label onClick={() => setSingleProduct(p)} for="manage-delete" class="btn btn-xs text-white bg-primary">Delete</label>
+                                    </th>
                                     <td>{p.name}</td>
                                     <td> {p.available_quantity}</td>
                                     <td>$ {p.price}</td>
@@ -52,6 +35,7 @@ const ManageProducts = () => {
 
                             </tbody>
                         </table>
+                        {singleProduct && <ManageDeleteModal singleProduct={singleProduct} products={products} setProducts={setProducts}></ManageDeleteModal>}
                     </div>
                 </p>)
             }
