@@ -127,11 +127,11 @@ const Purchase = () => {
                                             message: 'Enter a valid quantity'
                                         },
                                         max: {
-                                            value: 20000,
+                                            value: `${productQuantity.available_quantity}`,
                                             message: 'less than available quantity required'
                                         },
                                         min: {
-                                            value: 200,
+                                            value: `${productQuantity.minimum_order_quantity}`,
                                             message: 'more than minimum quantity required'
                                         }
                                     })} />

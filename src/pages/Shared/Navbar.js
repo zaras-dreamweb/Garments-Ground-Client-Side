@@ -24,13 +24,14 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-start">
-                <a className="normal-case font-bold text-2xl"><FontAwesomeIcon className='text-red-500' icon={faCircleDot}></FontAwesomeIcon> Garments Ground</a>
+                <a className="normal-case font-bold text-2xl"><FontAwesomeIcon className='text-red-500' icon={faCircleDot}></FontAwesomeIcon> G & G</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                     <li><Link to='/port'>My Portfolio</Link></li>
+                    <li><Link to='/blog'>Blog</Link></li>
                     <li><Link to='/register'>Register</Link></li>
                     <li> {
                         user
@@ -52,13 +53,15 @@ const Navbar = () => {
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-white rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
+                        <li><Link to='/port'>My Portfolio</Link></li>
+                        <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/register'>Register</Link></li>
                         <li> {
                             user
                                 ?
                                 <div>
                                     <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
-                                    <span>{user.displayName}</span>
+                                    <span>{user?.displayName}</span>
                                 </div>
                                 :
                                 <Link to="/login">Login</Link>
