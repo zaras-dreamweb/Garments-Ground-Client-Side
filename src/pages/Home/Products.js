@@ -4,12 +4,6 @@ import useProducts from '../../hooks/useProducts';
 
 const Products = () => {
     const navigate = useNavigate();
-    // const [products, setProducts] = useState([]);
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
-    //         .then(res => res.json())
-    //         .then(data => setProducts(data));
-    // }, []);
     const [products, setProducts] = useProducts();
 
     const handleBuyNow = id => {

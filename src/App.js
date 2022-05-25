@@ -17,7 +17,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAdmin from './pages/Authentication/RequireAdmin';
 import AddProducts from './pages/DashBoard/AddProducts';
-import MyProtfolio from './pages/MyProtfolio/MyProtfolio';
+import ManageProducts from './pages/DashBoard/ManageProducts';
+import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -37,18 +38,21 @@ function App() {
             <Dashboard></Dashboard>
           </RequiredAuth>
         }>
-          <Route index element={<MyOrders></MyOrders>}></Route>
-          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          {/* <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path='profile' element={<MyProfile></MyProfile>}></Route> */}
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path='order' element={<MyOrders></MyOrders>}></Route>
           <Route path='review' element={<AddReview></AddReview>}></Route>
           <Route path='payment/:id' element={<Payment></Payment>}></Route>
           <Route path='admin' element={<RequireAdmin><MakeAdmin></MakeAdmin></RequireAdmin>}></Route>
           <Route path='product' element={<RequireAdmin><AddProducts></AddProducts></RequireAdmin>}></Route>
+          <Route path='manage' element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}></Route>
         </Route>
 
 
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/Login' element={<Login></Login>}></Route>
-        <Route path='/port' element={<MyProtfolio></MyProtfolio>}></Route>
+        <Route path='/port' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer />

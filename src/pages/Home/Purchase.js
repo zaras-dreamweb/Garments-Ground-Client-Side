@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 
 const Purchase = () => {
+
     const { id } = useParams();
     const [user] = useAuthState(auth);
     const [productQuantity, setProductQuantity] = useState({});
@@ -21,12 +22,14 @@ const Purchase = () => {
     }, [productQuantity]);
 
 
+
     // ----------------Handle Increase in Quantity
 
     const onSubmitIncrease = (data, event) => {
         console.log(data);
         const oldQuantity = parseInt(productQuantity.your_purchase);
         const newQuantity = parseInt(event.target.your_purchase.value);
+
 
         const your_purchase = oldQuantity + newQuantity;
         const product = { your_purchase };
@@ -43,10 +46,11 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                alert('Product Increased successfully!!')
+                toast.success('Product Increased successfully!!')
                 event.target.reset();
             })
     }
+
 
 
 
@@ -73,7 +77,7 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                alert('Product Decreased successfully!!')
+                toast.success('Product Decreased successfully!!')
                 event.target.reset()
                 productQuantity.your_purchase.reset()
             })
@@ -139,7 +143,7 @@ const Purchase = () => {
                         {/*------------- Increase Quantity Form -------------------- */}
 
                         <form onSubmit={handleSubmit(onSubmitIncrease)}>
-                            <input type="text" name='your_purchase' placeholder="Increase Quantity"
+                            <input type="number" name='your_purchase' placeholder="Increase Quantity"
                                 {...register("your_purchase", {
                                     required: {
                                         value: true,
@@ -163,7 +167,7 @@ const Purchase = () => {
 
 
                         <form onSubmit={handleDecrease}>
-                            <input type="text" name='your_purchase' placeholder="Decrease Quantity" />
+                            <input type="number" name='your_purchase' placeholder="Decrease Quantity" />
                             <button type="submit" className="btn btn-primary mb-3 m-2">Decrease Quantity</button>
                         </form>
                     </div>
