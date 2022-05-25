@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleDot } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     const [user] = useAuthState(auth);
@@ -22,12 +24,13 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-start">
-                <a className="normal-case font-bold text-2xl">Garments Ground</a>
+                <a className="normal-case font-bold text-2xl"><FontAwesomeIcon className='text-red-500' icon={faCircleDot}></FontAwesomeIcon> Garments Ground</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
                     {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
+                    <li><Link to='/port'>My Portfolio</Link></li>
                     <li><Link to='/register'>Register</Link></li>
                     <li> {
                         user

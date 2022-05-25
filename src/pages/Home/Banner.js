@@ -1,6 +1,4 @@
 import React from 'react';
-import test from '../../images/test.jpg';
-import test2 from '../../images/banner22.jpg';
 import test3 from '../../images/new.png';
 
 const Banner = () => {
