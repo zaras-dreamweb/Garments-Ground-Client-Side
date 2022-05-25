@@ -26,9 +26,10 @@ const MyPortfolio = () => {
                     </h1>
 
                     <h1 className="text-xl text-yellow-300 font-bold pb-2"> <span className='text-primary font-bold text-2xl'>Link of some of My Projects:</span>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li><a href='https://perfumes-11.web.app/' target='_blank'>Your Fragrance</a></li>
+                        <li><a href='https://next-level-nutrition-2028a.web.app/' target='_blank'> Next Level Nutrition</a></li>
+                        <li><a href='https://book-block-bluster.netlify.app/' target='_blank'> Book Block Bluster</a></li>
+
                     </h1>
 
                 </div>

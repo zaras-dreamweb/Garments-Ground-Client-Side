@@ -5,17 +5,17 @@
         "description": "Made with plastics,polysthyrene and polyvinnyl resins.",
         "minimum_order_quantity": "200",
         "available_quantity": "20000",
-        "your_purchase": "200",
+        "ordered_quantity": "0",
         "price": "3",
         "your_price": "600"
     },
     {
         "name": "Zippers",
-        "image": "https://i.ibb.co/K0vFzrS/zip22.png",
-        "description": "Made of polyester and nylon.",
+        "image": "https://i.ibb.co/19WH9m7/zup.png",
+        "description": "Made of polyester and nylon. Zipper pulls are made of metal.",
         "minimum_order_quantity": "200",
         "available_quantity": "20000",
-        "your_purchase": "200",
+        "ordered_quantity": "0",
         "price": "5",
         "your_price": "1000"
     },
@@ -25,7 +25,7 @@
         "description": "Shirt collar made of brass, baleen,plastic and metal.",
         "minimum_order_quantity": "200",
         "available_quantity": "20000",
-        "your_purchase": "200",
+        "ordered_quantity": "0",
         "price": "4",
         "your_price": "800"
     }

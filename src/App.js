@@ -19,6 +19,7 @@ import RequireAdmin from './pages/Authentication/RequireAdmin';
 import AddProducts from './pages/DashBoard/AddProducts';
 import ManageProducts from './pages/DashBoard/ManageProducts';
 import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
+import Footer from './pages/Shared/Footer';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path='/port' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer />
     </div>
   );
