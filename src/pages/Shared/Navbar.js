@@ -26,14 +26,14 @@ const Navbar = () => {
             <div className="navbar-start">
                 <a className="normal-case font-bold text-2xl"><FontAwesomeIcon className='text-red-500' icon={faCircleDot}></FontAwesomeIcon> G & G</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
-                    <li><Link to='/'>Home</Link></li>
+            <div className="navbar-center hidden lg:flex ">
+                <ul className="menu menu-horizontal p-0 mx-2">
+                    <li className='pr-2'><Link to='/'>Home</Link></li>
                     {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
-                    <li><Link to='/port'>My Portfolio</Link></li>
-                    <li><Link to='/blog'>Blog</Link></li>
-                    <li><Link to='/register'>Register</Link></li>
-                    <li> {
+                    <li className='pr-2'><Link to='/port'>My Portfolio</Link></li>
+                    <li className='pr-2'><Link to='/blog'>Blog</Link></li>
+                    <li className='pr-2'><Link to='/register'>Register</Link></li>
+                    <li className='pr-2'> {
                         user
                             ?
                             <div>
@@ -52,12 +52,12 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-white rounded-box w-52">
-                        <li><Link to='/'>Home</Link></li>
-                        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
-                        <li><Link to='/port'>My Portfolio</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
-                        <li><Link to='/register'>Register</Link></li>
-                        <li> {
+                        <li className='pr-2'><Link to='/'>Home</Link></li>
+                        {user && <li className='pr-2'><Link to='/dashboard'>Dashboard</Link></li>}
+                        <li className='pr-2'><Link to='/port'>My Portfolio</Link></li>
+                        <li className='pr-2'><Link to='/blog'>Blog</Link></li>
+                        <li className='pr-2'><Link to='/register'>Register</Link></li>
+                        <li className='pr-2'> {
                             user
                                 ?
                                 <div>
