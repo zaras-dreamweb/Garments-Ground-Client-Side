@@ -131,11 +131,11 @@ const Register = () => {
                         <p>New to Garments Ground? <Link className='text-primary' to="/register">Please Register</Link></p>
                         {errorItem}
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary text-white">Login</button>
                         </div>
                         <div className="form-control mt-6">
                             {/* <GoogleLogin></GoogleLogin> */}
-                            <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary text-white w-full">Google SignIn</button>
+                            <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-primary  w-full">Google SignIn</button>
                         </div>
                     </form>
                 </div>
