@@ -56,7 +56,7 @@ const MyOrders = () => {
 
                                     <tr>
                                         <th>{
-                                            (!order.paid) && <label onClick={() => setSingleOrder(order)} for="delete-modal" class="btn btn-xs bg-primary text-white">Delete M</label>
+                                            (!order.paid) && <label onClick={() => setSingleOrder(order)} htmlFor="delete-modal" className="btn btn-xs bg-primary text-white">Delete</label>
                                         }</th>
                                         <td>{order.email}</td>
                                         <td>{order.name}</td>

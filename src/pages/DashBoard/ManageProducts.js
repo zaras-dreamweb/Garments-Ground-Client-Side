@@ -10,8 +10,8 @@ const ManageProducts = () => {
         <div>
             {
                 products.map(p => <p key={p._id}>
-                    <div class="overflow-x-auto">
-                        <table class="table w-full">
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
 
                             <thead>
                                 <tr>
@@ -25,7 +25,7 @@ const ManageProducts = () => {
 
                                 <tr>
                                     <th>
-                                        <label onClick={() => setSingleProduct(p)} for="manage-delete" class="btn btn-xs text-white bg-primary">Delete</label>
+                                        <label onClick={() => setSingleProduct(p)} htmlFor="manage-delete" className="btn btn-xs text-white bg-primary">Delete</label>
                                     </th>
                                     <td>{p.name}</td>
                                     <td> {p.available_quantity}</td>

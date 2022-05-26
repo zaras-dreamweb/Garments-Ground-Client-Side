@@ -5,7 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Discount = () => {
     return (
-        <div>
+        <div >
             <h1 className='text-blue-400 text-5xl text-center font-bold my-10 py-5'>Enjoy Our Free Samples!</h1>
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">

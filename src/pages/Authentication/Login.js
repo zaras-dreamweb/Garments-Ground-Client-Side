@@ -23,14 +23,17 @@ const Register = () => {
     const [
         signInWithEmailAndPassword,
         user,
+        loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    console.log(error);
 
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     const [token] = useToken(user || gUser);
+
 
     let errorItem;
     if (errors || error || gError) {
@@ -48,7 +51,7 @@ const Register = () => {
         }
     }, [token, from, navigate]);
 
-    if (loading) {
+    if (loading || gLoading) {
         return <Loading></Loading>
     }
 

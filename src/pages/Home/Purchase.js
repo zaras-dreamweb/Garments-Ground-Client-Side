@@ -48,7 +48,7 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                toast.success('Product Increased successfully!!')
+                toast.success('Quantity Increased successfully!!')
                 event.target.reset();
             })
     }
@@ -81,7 +81,8 @@ const Purchase = () => {
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(order)
         })
@@ -96,10 +97,10 @@ const Purchase = () => {
     return (
 
         <div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
 
-                    <div class="text-center lg:text-left bg-base-100 rounded-lg shadow-2xl">
+                    <div className="text-center lg:text-left bg-base-100 rounded-lg shadow-2xl pr-20 pl-20">
                         <div className="pl-5 pt-5">
                             <figure className="w-20 rounded">
                                 <img src={productQuantity.image} alt='' className="mask mask-circle " />
@@ -114,7 +115,7 @@ const Purchase = () => {
                             <p className="py-3"><span className='font-bold'>Minimum Purchase:</span> {productQuantity.minimum_order_quantity} pcs</p>
                             <p className="py-3"><span className='font-bold'>Price:</span> ${productQuantity.price} /pc</p>
                             <p className="py-3"><span className='font-bold'>Your Purchase Quantity:</span> {productQuantity.ordered_quantity} pcs</p>
-                            <p className="py-3"><span className='font-bold'>Your Price:</span> ${productQuantity.your_price} /pc</p>
+
 
 
                             {/*------------- Quantity Input form -------------------- */}
@@ -147,6 +148,8 @@ const Purchase = () => {
                     </div>
 
 
+                    {/* -------------------------place order form------------------------ */}
+
                     <div className="hero">
                         <div>
                             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -162,16 +165,22 @@ const Purchase = () => {
                                             <input type="text" name='name' value={productQuantity.name} placeholder='' className="input input-bordered" disabled />
                                         </div>
                                         <div className="form-control">
+                                            <label class="label">
+                                                <span class="label-text">Quantity</span>
+                                            </label>
                                             <input type="text" name='quantity' value={productQuantity.ordered_quantity} placeholder='' className="input input-bordered" disabled />
                                         </div>
                                         <div className="form-control">
+                                            <label class="label">
+                                                <span class="label-text">Price</span>
+                                            </label>
                                             <input type="text" name='price' value={productQuantity.your_price} placeholder='' className="input input-bordered" disabled />
                                         </div>
                                         <div className="form-control">
-                                            <input type="text" name='address' placeholder="Address" className="input input-bordered" />
+                                            <input type="text" name='address' placeholder="Address" className="input input-bordered" required />
                                         </div>
                                         <div className="form-control">
-                                            <input type="text" name='phone' placeholder="Phone" className="input input-bordered" />
+                                            <input type="text" name='phone' placeholder="Phone" className="input input-bordered" required />
                                         </div>
                                         <div className="form-control mt-6">
                                             <button disabled={errors.ordered_quantity} type='submit' className="btn btn-primary text-white">Place Order</button>

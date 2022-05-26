@@ -18,8 +18,8 @@ const Navbar = () => {
         <div className="navbar bg-success text-lime-600">
 
             <div className="navbar-start">
-                <label for="my-drawer-2" tabindex="1" className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                <label htmlFor="my-drawer-2" tabIndex="1" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
             </div>
 
@@ -38,7 +38,7 @@ const Navbar = () => {
                             ?
                             <div>
                                 <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
-                                <span>{user?.displayName}</span>
+                                <span>{user.displayName}</span>
                             </div>
                             :
                             <Link to="/login">Login</Link>
@@ -47,10 +47,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className="dropdown dropdown-end">
-                    <label tabindex="0" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-white rounded-box w-52">
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-white rounded-box w-52">
                         <li><Link to='/'>Home</Link></li>
                         {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
                         <li><Link to='/port'>My Portfolio</Link></li>
@@ -61,7 +62,7 @@ const Navbar = () => {
                                 ?
                                 <div>
                                     <button onClick={handleSignOut} className='text-bold pb-2 text-white pt-2'>SignOut</button>
-                                    <span>{user?.displayName}</span>
+                                    <span>{user.displayName}</span>
                                 </div>
                                 :
                                 <Link to="/login">Login</Link>

@@ -21,8 +21,16 @@ import ManageProducts from './pages/DashBoard/ManageProducts';
 import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 import Footer from './pages/Shared/Footer';
 import Blog from './pages/Blog/Blog';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div>
       <Navbar></Navbar>
@@ -40,8 +48,6 @@ function App() {
             <Dashboard></Dashboard>
           </RequiredAuth>
         }>
-          {/* <Route index element={<MyOrders></MyOrders>}></Route>
-          <Route path='profile' element={<MyProfile></MyProfile>}></Route> */}
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='order' element={<MyOrders></MyOrders>}></Route>
           <Route path='review' element={<AddReview></AddReview>}></Route>

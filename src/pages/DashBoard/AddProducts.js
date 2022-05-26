@@ -2,7 +2,6 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const AddProducts = () => {
-
     const handleAddProducts = event => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -10,7 +9,7 @@ const AddProducts = () => {
         const description = event.target.description.value;
         const minimum_order_quantity = event.target.minimum_order_quantity.value;
         const available_quantity = event.target.available_quantity.value;
-        const your_purchase = event.target.your_purchase.value;
+        const ordered_quantity = event.target.ordered_quantity.value;
         const your_price = event.target.your_price.value;
         const price = event.target.price.value;
 
@@ -21,7 +20,7 @@ const AddProducts = () => {
             description,
             minimum_order_quantity,
             available_quantity,
-            your_purchase,
+            ordered_quantity,
             price,
             your_price
         }
@@ -63,7 +62,7 @@ const AddProducts = () => {
                                     <input type="number" name='available_quantity' placeholder='Available_quantity' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
-                                    <input type="number" name='your_purchase' placeholder='Your_purchase' className="input input-bordered" />
+                                    <input type="number" name='ordered_quantity' defaultValue='0' placeholder='Order_quantity' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <input type="number" name='price' placeholder='Price' className="input input-bordered" />

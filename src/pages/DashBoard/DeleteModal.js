@@ -22,14 +22,14 @@ const DeleteModal = ({ singleOrder, orders, setOrders }) => {
     }
     return (
         <div>
-            <input type="checkbox" id="delete-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <label for="delete-modal" class="btn btn-sm btn-circle absolute right-2 top-2 bg-primary text-white">✕</label>
-                    <h3 class="font-bold text-lg mt-5 text-secondary">Are you sure you want to delete your order for <span className='text-primary'>{name}?</span></h3>
-                    <p class="py-4 text-primary font-bold">Click YES to delete and X to cancel delete.</p>
-                    <div class="modal-action">
-                        <label for="delete-modal" onClick={() => handleDelete(_id)} class="btn bg-primary text-white">Yes</label>
+            <input type="checkbox" id="delete-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <label htmlFor="delete-modal" className="btn btn-sm btn-circle absolute right-2 top-2 bg-primary text-white">✕</label>
+                    <h3 className="font-bold text-lg mt-5 text-secondary">Are you sure you want to delete your order for <span className='text-primary'>{name}?</span></h3>
+                    <p className="py-4 text-primary font-bold">Click YES to delete and X to cancel delete.</p>
+                    <div className="modal-action">
+                        <label htmlFor="delete-modal" onClick={() => handleDelete(_id)} className="btn bg-primary text-white">Yes</label>
                     </div>
                 </div>
             </div>
