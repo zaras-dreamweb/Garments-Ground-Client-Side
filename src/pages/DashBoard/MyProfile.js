@@ -20,7 +20,7 @@ const MyProfile = () => {
             linkedin
         }
 
-        fetch(`http://localhost:5000/user/${user.email}`, {
+        fetch(`https://whispering-badlands-42201.herokuapp.com/user/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

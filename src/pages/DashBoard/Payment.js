@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L2izEB8LIYYWx18eThoPtYntvPKw1vic4CXe
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/order/${id}`;
+    const url = `https://whispering-badlands-42201.herokuapp.com/order/${id}`;
     const { data: order, isLoading } = useQuery(['order', id], () => fetch(url).then(res => res.json()))
 
 

@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
     const { price, _id, user, name, email } = order;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://whispering-badlands-42201.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -81,7 +81,7 @@ const CheckoutForm = ({ order }) => {
             }
 
 
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://whispering-badlands-42201.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

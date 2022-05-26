@@ -5,7 +5,7 @@ const ManageDeleteModal = ({ singleProduct, products, setProducts }) => {
     const { _id, name } = singleProduct;
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://whispering-badlands-42201.herokuapp.com/products/${id}`, {
             method: 'DELETE',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

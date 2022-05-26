@@ -15,7 +15,7 @@ const Purchase = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://whispering-badlands-42201.herokuapp.com/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProductQuantity(data));
@@ -37,7 +37,7 @@ const Purchase = () => {
         console.log(product);
         setProductQuantity(product)
 
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://whispering-badlands-42201.herokuapp.com/products/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -78,7 +78,7 @@ const Purchase = () => {
             price
         }
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://whispering-badlands-42201.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
