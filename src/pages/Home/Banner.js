@@ -17,14 +17,14 @@ const Banner = () => {
                             data-aos-duration="30000"
                             data-aos-delay="200"
                             className="mb-5 text-5xl font-bold text-secondary"
-                        >Garments Gorund</h1>
+                        >Garments Ground</h1>
 
 
                         <p data-aos="fade-right"
                             data-aos-duration="10000"
                             data-aos-delay="800"
                             className="mb-5 text-2xl text-secondary"
-                        >Your Choise! Our Products!!</p>
+                        >Your Choice! Our Products!!</p>
 
                     </div>
                 </div>
